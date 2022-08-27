@@ -1,16 +1,13 @@
+import fractions
 import json
+from re import I
 import requests
-import bs4
 appkey = ""
 kommunenr = ""
-gatenavn = ""
+gatenavn = "M"
 gatekode = ""
 husnr = ""
 url = "https://komteksky.norkart.no/komtek.renovasjonwebapi/api/tommekalender/?kommunenr="+kommunenr+"&gatenavn="+gatenavn+"&gatekode="+gatekode+"&husnr="+husnr+" HTTP/1.1"
-
-
-
-
 
 
 headers = {
@@ -32,12 +29,15 @@ headers = {
 
     }
 
-#print("GET", url, headers)
+
 response = requests.get(url, headers=headers)
 
-
-
 r =response.text
+data = json.loads(r)
+
+print(data)
+for i in data:
+    print(i['FraksjonId'])
+    print(i['Tommedatoer'])
 
 
-print(r)
