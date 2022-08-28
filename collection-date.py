@@ -1,6 +1,5 @@
 import fractions
 import json
-from re import I
 import requests
 appkey = ""
 kommunenr = ""
